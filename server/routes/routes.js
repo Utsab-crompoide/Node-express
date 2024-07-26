@@ -3,6 +3,18 @@ import { getAllItems, addUser, updateUser, deleteUser } from '../controller/user
 
 const route = express.Router();
 
+route.get('/smoothies', (req, res) => {
+    res.render('home')
+})
+
+route.get('/login', (req, res) => {
+    res.render('login')
+})
+
+route.get('/signup', (req, res) => {
+    res.render('signUp')
+})
+
 /**
  * @swagger
  * /user:

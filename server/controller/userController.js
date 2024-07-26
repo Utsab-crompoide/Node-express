@@ -9,9 +9,14 @@ export const getAllItems =async (req, res) => {
         return res.status(200).json(users)
     }
     catch(error){
-        console.log(error)
+        console.log('ERROR', error)
+        handleErrors(error)
     }
     console.log('Success')
+}
+
+const handleErrors = (err) => {
+    console.log(er.message, err.code)
 }
 
 export const addUser = async(req, res) => {

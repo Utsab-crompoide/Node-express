@@ -1,4 +1,4 @@
-import { DataTypes } from "sequelize"
+import { DataTypes } from 'sequelize';
 
 export const userModel = async (sequelize) => {
 
@@ -9,19 +9,18 @@ export const userModel = async (sequelize) => {
         }, 
         email: {
             type: DataTypes.STRING,
-            lowercase: true,
-            required: [true, 'Email is required'],
-            unique: true,
+            allowNull: false,
+            unique: true
         },
         password: {
             type: DataTypes.STRING,
-            required: [true, 'Password is required']
-            
+            allowNull: false
         },
         userId: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         }
     });
     return User;
-}
+};
