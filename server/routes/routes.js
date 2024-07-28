@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllItems, addUser, updateUser, deleteUser } from '../controller/userController.js';
+import { getAllItems, addUser, updateUser, deleteUser, getById } from '../controller/userController.js';
 
 const route = express.Router();
 
@@ -15,9 +15,13 @@ route.get('/signup', (req, res) => {
     res.render('signUp')
 })
 
+route.get('/login_post', getById)
+
+// route.get('/signup_post', addUser)
+
 /**
  * @swagger
- * /user:
+ * /user/getAllUsers:
  *   get:
  *     summary: Retrieve a list of users
  *     tags: [User]
@@ -35,7 +39,33 @@ route.get('/user/getAllUsers', getAllItems)
 
 /**
  * @swagger
- * /user:
+ * /users/getById/{userId}:
+ *   get:
+ *     summary: Retrieve a user by ID
+ *     tags: [User]
+ *     description: Retrieve details of a user by their unique ID.
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Unique identifier of the user
+ *     responses:
+ *       200:
+ *         description: A user object
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *       500:
+ *         description: Internal server error
+ */
+route.get('/users/getById/:userId', getById)
+
+/**
+ * @swagger
+ * /user/addUser:
  *   post:
  *     summary: Add a new user
  *     tags: [User]
