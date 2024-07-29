@@ -1,9 +1,9 @@
 import express from 'express'
-import { getAllItems, addUser, updateUser, deleteUser, getById } from '../controller/userController.js';
+import { getAllItems, addUser, updateUser, deleteUser, getById, login } from '../controller/userController.js';
 
 const route = express.Router();
 
-route.get('/smoothies', (req, res) => {
+route.get('/home', (req, res) => {
     res.render('home')
 })
 
@@ -15,9 +15,7 @@ route.get('/signup', (req, res) => {
     res.render('signUp')
 })
 
-route.get('/login_post', getById)
-
-// route.get('/signup_post', addUser)
+route.post('/login_post', login)
 
 /**
  * @swagger
@@ -76,13 +74,13 @@ route.get('/users/getById/:userId', getById)
  *           schema:
  *             type: object
  *             required:
- *               - name
+ *               - fullName
  *               - email
  *               - userId
  *             properties:
- *               name:
+ *               fullName:
  *                 type: string
- *                 description: The user's name
+ *                 description: The user's full name
  *               email:
  *                 type: string
  *                 description: The user's email
@@ -125,7 +123,7 @@ route.post('/user/createUser', addUser);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               fullName:
  *                 type: string
  *                 description: The user's name
  *               email:

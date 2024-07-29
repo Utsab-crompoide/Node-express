@@ -29,14 +29,52 @@ export const getById =async (req, res) => {
         return res.status(200).json(users)
     }
     catch(error){
-        console.log('ERROR', error)
         handleErrors(error)
     }
     console.log('Success')
 }
 
+export const login = async (req, res) => {
+    const {email, password} = req.body;
+    try{
+        const user = await UserModel.findOne({where: {email:email}});
+        if(!user){
+            throw Error('Incorrect email')
+        }
+        if(!(user.password === password)){
+            throw Error("Incorrect Password")
+        }
+        const token = jsonWebToken(user.userId)
+        res.cookie('jwt', token, {httpOnly:true, maxAge: maxAge * 1000})
+        return res.status(200).json(user)
+    }
+    catch(error){
+        const errors = handleErrors(error)
+        res.status(400).json({errors})
+    }
+}
+
 const handleErrors = (err) => {
-    console.log(er.message, err.code)
+    let errors = {email: '', password: '', fullName: ''}
+    if (Array.isArray(err)) {
+        const messages = err.map(errorItem => ({
+            message: errorItem.message,
+            path: errorItem.path
+        }));
+        messages.forEach(message => {
+            errors[message.path] = message.message
+        }
+        );
+        return errors;
+    } else {
+        if(err.message === 'Incorrect email'){
+            errors.email = 'Invalid Email'
+        }
+        if(err.message === 'Incorrect Password'){
+            errors.password = 'Incorrect Password'
+        }
+        return errors;
+    }
 }
 
 const maxAge = 60 * 60 * 24
@@ -50,8 +88,6 @@ export const addUser = async(req, res) => {
     try{
         const userId = uuidv4()
         req.body.userId = userId
-        const existingUser = await UserModel.findOne({where: {userId:userId}})
-        if(existingUser === null){
             const user = await UserModel.create(req.body);
             if(user.dataValues){
                 const token = jsonWebToken(user.dataValues.userId)
@@ -59,10 +95,9 @@ export const addUser = async(req, res) => {
                 return res.status(200).json({'message':'User created successfully', token, userId})
             }
             return res.status(200).json({'message':'Error creating user!'})
-        }
-        return res.status(200).json({'message':'Existing user found!'})
     } catch (error){
-        console.log(error, 'ERROR')
+        const errors = handleErrors(error.errors)
+        res.status(400).json({errors})
     }
 }
 
