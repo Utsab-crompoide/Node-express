@@ -1,2 +1,2 @@
-Practice project for Node Js.
+Practice project: Node Js, express
 Database: PostgreSQL
