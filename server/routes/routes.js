@@ -1,9 +1,11 @@
 import express from 'express'
-import { getAllItems, addUser, updateUser, deleteUser, getById, login } from '../controller/userController.js';
+import { getAllItems, addUser, updateUser, deleteUser, getById, login, logOut } from '../controller/userController.js';
+import { requireAuth, currentUser } from '../middleware/authMiddleware.js';
 
 const route = express.Router();
 
-route.get('/home', (req, res) => {
+route.get('*', currentUser);
+route.get('/home', requireAuth, (req, res) => {
     res.render('home')
 })
 
@@ -16,6 +18,8 @@ route.get('/signup', (req, res) => {
 })
 
 route.post('/login_post', login)
+
+route.get('/logOut', logOut)
 
 /**
  * @swagger

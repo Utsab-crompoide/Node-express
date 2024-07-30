@@ -44,7 +44,7 @@ export const login = async (req, res) => {
         if(!(user.password === password)){
             throw Error("Incorrect Password")
         }
-        const token = jsonWebToken(user.userId)
+        const token = jsonWebToken(user.dataValues.userId, user.dataValues.email, user.dataValues.fullName)
         res.cookie('jwt', token, {httpOnly:true, maxAge: maxAge * 1000})
         return res.status(200).json(user)
     }
@@ -78,8 +78,8 @@ const handleErrors = (err) => {
 }
 
 const maxAge = 60 * 60 * 24
-const jsonWebToken = (userId) => {
-    return jwt.sign({userId}, 'test node', {
+const jsonWebToken = (userId, email, fullName) => {
+    return jwt.sign({userId, email, fullName}, 'test node', {
         expiresIn: maxAge
     })
 }
@@ -90,7 +90,7 @@ export const addUser = async(req, res) => {
         req.body.userId = userId
             const user = await UserModel.create(req.body);
             if(user.dataValues){
-                const token = jsonWebToken(user.dataValues.userId)
+                const token = jsonWebToken(user.dataValues.userId, user.dataValues.email, user.dataValues.fullName)
                 res.cookie('jwt', token, {httpOnly:true, maxAge: maxAge * 1000})
                 return res.status(200).json({'message':'User created successfully', token, userId})
             }
@@ -127,4 +127,9 @@ export const deleteUser = async(req, res) => {
     } catch (error){
         console.log(error, 'ERROR')
     }
+}
+
+export const logOut = (req, res) => {
+    res.cookie('jwt', '', {maxAge:1})
+    res.redirect('/login')
 }

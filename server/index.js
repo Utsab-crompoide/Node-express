@@ -4,6 +4,7 @@ import route from './routes/routes.js';
 import cors from 'cors'
 import { swaggerSpec, swaggerUi } from './config/swagger.js';
 import cookieParser from 'cookie-parser';
+import {currentUser} from './middleware/authMiddleware.js'
 
 const app = express();
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Serve Swagger UI
@@ -13,6 +14,7 @@ app.use(route);
 app.use(cors())
 app.use(express.static('public'))
 app.set('view engine', 'ejs');
+// app.get('*', currentUser)
 
 const PORT = 3000;
 
