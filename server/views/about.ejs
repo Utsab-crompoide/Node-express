@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Futsal Booking</title>
+    <style>
+      /* Reset some basic styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff8a8a, #ffd98a, #c3f591, #8ad9ff);
+        background-size: cover;
+        color: #333;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        max-width: max-content;
+        margin: 0px auto;
+        padding: 20px;
+        /* background: rgba(255, 255, 255, 0.9); */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1,
+      h2 {
+        color: #0066cc;
+        margin-bottom: 15px;
+      }
+
+      p {
+        margin-bottom: 15px;
+      }
+
+      .contact-info {
+        margin-top: 20px;
+      }
+
+      .contact-info h2 {
+        margin-bottom: 10px;
+      }
+
+      .contact-info p {
+        font-size: 1.1rem;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+    </style>
+  </head>
+  <%- include('partials/header.ejs'); -%>
+
+  <body>
+    <div class="container">
+      <h1>About Us</h1>
+      <p>
+        Welcome to Futsal Nepal, your go-to destination for booking futsal grounds with ease! Our mission is to make it simple and convenient for sports enthusiasts to find and reserve futsal courts at their preferred locations. Whether you're planning a casual game with friends or organizing a
+        tournament, we provide a streamlined booking experience so you can focus on what matters most: playing!
+      </p>
+
+      <h2>Our Story</h2>
+      <p>
+        Founded in 2024, Futsal Nepal started with a passion for sports and a desire to bring the community together. We noticed that finding a futsal ground was often a hassle, especially during peak hours. To solve this, we built a platform that lets users view availability, select the ideal slot,
+        and book a futsal court instantly.
+      </p>
+
+      <h2>Why Choose Us?</h2>
+      <p>
+        At Futsal Nepal, we prioritize customer satisfaction by offering a wide selection of futsal grounds across the city, reliable booking options, and a hassle-free experience. Our platform is designed to cater to players of all skill levels, from beginners to seasoned players, and provides
+        details on court size, location, and amenities.
+      </p>
+
+      <h2>Our Values</h2>
+      <ul>
+        <li><strong>Convenience:</strong> Easy-to-use booking platform.</li>
+        <li><strong>Reliability:</strong> Real-time availability and instant confirmation.</li>
+        <li><strong>Community:</strong> Building a network of passionate futsal players.</li>
+      </ul>
+
+      <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, suggestions, or need help with a booking, please reach out to us!</p>
+        <p><strong>Email:</strong> 'Email'</p>
+        <p><strong>Phone:</strong> 'Phone'</p>
+        <p><strong>Address:</strong> 'Address'</p>
+      </div>
+
+      <div class="footer">
+        <p>&copy; 2024 Futsal Nepal. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -8,7 +8,6 @@ const requireAuth = (req, res, next) => {
                 console.log(err.message)
                 res.redirect('/login')
             } else {
-                console.log(decodedToken)
                 next()
             }
         })
@@ -26,7 +25,6 @@ const currentUser = (req, res, next) => {
                 res.locals.user = null
                 next()
             } else {
-                console.log(decodedToken)
                 res.locals.user = decodedToken
                 next()
             }

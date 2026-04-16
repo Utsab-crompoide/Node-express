@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff8a8a, #ffd98a, #c3f591, #8ad9ff);
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .account-container {
+            max-width: 400px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0066cc;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        .account-info {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .account-info p {
+            margin-bottom: 10px;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-around;
+        }
+        .btn {
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #004999;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header.ejs'); -%>
+
+    <div class="account-container">
+        <h1>My Account</h1>
+        
+        <div class="account-info">
+            <p><strong>Name:</strong> Utsab</p>
+            <p><strong>Email:</strong> zzz@gmail.com</p>
+            <p><strong>Phone:</strong> 9898989889</p>
+        </div>
+
+        <div class="actions">
+            <a href="/edit-profile" class="btn">Edit Profile</a>
+        </div>
+    </div>
+
+</body>
+</html>

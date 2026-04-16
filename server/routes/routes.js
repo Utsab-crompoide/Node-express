@@ -17,6 +17,14 @@ route.get('/signup', (req, res) => {
     res.render('signUp')
 })
 
+route.get('/about', (req, res) => {
+    res.render('about')
+})
+
+route.get('/account', (req, res) => {
+    res.render('account')
+})
+
 route.post('/login_post', login)
 
 route.get('/logOut', logOut)
@@ -67,7 +75,7 @@ route.get('/users/getById/:userId', getById)
 
 /**
  * @swagger
- * /user/addUser:
+ * /user/createUser:
  *   post:
  *     summary: Add a new user
  *     tags: [User]
@@ -88,9 +96,6 @@ route.get('/users/getById/:userId', getById)
  *               email:
  *                 type: string
  *                 description: The user's email
- *               userId:
- *                 type: string
- *                 description: The user's unique ID
  *     responses:
  *       200:
  *         description: User created successfully or existing user found
