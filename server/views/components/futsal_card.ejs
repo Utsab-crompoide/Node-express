@@ -1,0 +1,20 @@
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group">
+    <div class="h-48 overflow-hidden relative">
+        <img alt="<%= futsal.name %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<%= futsal.imageSrc %>"/>
+        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+            <span class="material-symbols-outlined text-sm text-amber-500" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+            <span class="text-xs font-bold text-on-surface"><%= futsal.rating %></span>
+        </div>
+    </div>
+    <div class="p-4">
+        <h4 class="font-headline font-bold text-on-surface mb-1"><%= futsal.name %></h4>
+        <div class="flex items-center gap-1 text-on-surface-variant text-xs mb-3">
+            <span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+            <%= futsal.location %>
+        </div>
+        <div class="flex justify-between items-center">
+            <span class="text-primary font-bold"><%= futsal.price %><span class="text-xs font-normal text-on-surface-variant">/hr</span></span>
+            <button class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1.5 rounded-lg text-xs font-bold">Book Now</button>
+        </div>
+    </div>
+</div>

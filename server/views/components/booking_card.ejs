@@ -1,0 +1,20 @@
+<div class="group bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden flex flex-col h-full hover:translate-y-[-4px] transition-all duration-300">
+    <div class="absolute left-0 top-0 h-full w-1 bg-primary"></div>
+    <div class="flex justify-between items-start mb-6">
+        <div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+            <%= booking.status %>
+        </div>
+        <span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+    </div>
+    <h3 class="font-headline font-bold text-xl mb-2"><%= booking.title %></h3>
+    <div class="space-y-2 mt-auto">
+        <div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
+            <span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+            <%= booking.date %>
+        </div>
+        <div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
+            <span class="material-symbols-outlined text-sm" data-icon="alarm">alarm</span>
+            <%= booking.timeDuration %>
+        </div>
+    </div>
+</div>

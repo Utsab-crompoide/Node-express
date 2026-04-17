@@ -1,5 +1,5 @@
 .home {
-  background-image: url('/assets/FootballGround.jpg');
+  background-image: url("./../../assets/FootballGround.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -15,10 +15,12 @@
   left: 10%;
   transform: translateY(-50%);
   color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   margin: 0 0 10px 0;
 }
 

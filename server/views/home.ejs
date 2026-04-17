@@ -1,15 +1,129 @@
-<%- include('partials/header.ejs'); -%>
+<%- include('partials/header.ejs') %>
 
-<link rel="stylesheet" href="/css/dashboard.css">
+<%
+const liveReminders = [
+    { type: 'schedule', icon: 'schedule', title: 'Match in 2 hours', description: 'Kinetic Arena - Court A' },
+    { type: 'payment', icon: 'payments', title: 'Payment Successful', description: 'Transaction ID: #FK-9921' }
+];
 
-<body>
-  <div class="home">
-    <div class="headings">
-      <h2>Welcome</h2>
-      <h3>to Footsal Nepal</h3>
-      <h4>Search and Book any futsals of your choice</h4>
-    </div>
-  </div>
-</body>
+const upcomingBookings = [
+    { status: 'Confirmed', title: 'Grand Central Arena', date: 'Saturday, 24 Oct', timeDuration: '18:00 - 19:30 (90 min)' },
+    { status: 'Confirmed', title: 'Emerald Sports Hub', date: 'Monday, 26 Oct', timeDuration: '20:00 - 21:00 (60 min)' }
+];
 
-<%- include('partials/footer'); -%>
+const recommendedFutsals = [
+    {
+        name: 'Velocity Pitch One',
+        imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBf_iKxlKtnoRPRxGRfobvzyPMIzbm7kRHoBtXTAWqQ7lY2OThy1EHnbYnBJh-aMRy03sRuIyMKQ_NBKqOXUsn8ZsfQcrh0LNbIeIh8AezG4LzwV95HcipzLs_6jB91G2l4YUHAKtxywZ5yWPJHE5Sf5piEbW7fkeckfFwSeaFqc5RAgPh3IrdUdOCM6P8GylPHQixCkaGIqxjjknClc0WnXkF7AhMNfDM5fmcqvq9WlaGHzu1qqcVWK2u3FRnH6nXx9uYS838SOIo',
+        rating: '4.9', location: 'Downtown District', price: '$45'
+    },
+    {
+        name: 'Skyline Roof Turf',
+        imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBeuiOuog1qip_tUDu8UR7eY3HAT2QuIqWigI4RukttlZZnp9aaGIE6vpgeOeHeqNp0HQFLrpRGsbsynHiKK5SFDk_vUUz8EbDzTOn1dgvp2u5jekqB-O4QMqPDSwAK7lEj-uhMveGnS0jTEClhTjIrlUBFWvxSydCBoL_8kT2mbpM0sjEB0soRs6S8UUVXGEvtZz8Tuag0sX34cBQFeOB2lfD4ymHfRlwfjqx4huAvZbAIxBKHVSDWHuCUotjf_Sj0GWBXnwuZ4Zk',
+        rating: '4.7', location: 'East Point', price: '$60'
+    },
+    {
+        name: 'The Kinetic Dome',
+        imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBRkZGE-V16vvXSCPX9khHZSf6_0IizyOZ4K7pXagxLwBKgP_hglLgyGimBPshRcm0R7xFCie-MpxobYn7ubfAOZk0uGeJeUlLGwQWPRDL1U5uKc8Nl0E5zqOuDOaenHWxqIo0wgq423DGfhQxji7UysahLX1_FCM5mmmm-ft-_7tH_1b91pqYcwlZB9D6IBCzwkfJ49rEndG5DkHEw06ceM3hzmGIVabg5n_Lx9oQN5xMZps_P-0c2-9tGYaBS5rOFCm5Xyw-4ynA',
+        rating: '4.8', location: 'North Valley', price: '$55'
+    },
+    {
+        name: 'Urban Arena Blue',
+        imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCekEHhC34Sj508kckppq8XrLEKJNofyoT8l_Swb18Lk4Cl0wX4JaGq9HsQr7U3SAVcpibeFR4He5WyRWUli9pyT62KSmombTHcNTlhSKor8YZvL7P2VvV6ij30L3SyImXJDAo3fTlVO2nxIs9B6fbrdLj6fGmz3lAEfgMgUK1OEBVSFWF4U9wfA5CIAp37vONA4gkP8T_pAKAfaQk5EecjabqludfcujbyZV4k54FBRCOJNgFuQd0KELrOupnrfnrGA3rP2uzP2MI',
+        rating: '4.5', location: 'South Port', price: '$40'
+    }
+];
+
+const recentlyViewed = [
+    { name: 'Legacy Park', distance: '2.4 miles away', imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjSxHS3ANkiG83f4xwAutq4r8B-WzPaVpr-pomAID0IFV7OCs74Nt4znuQyjwXpgPqS6Y64rbxio1Ih6c13eedPpWJGYRRUWpHfGni2axv12Ib9T0PRlkhGnEENKD7RIOGNP_7eCdzPbZ9AhqDI33TpbDdvM57FxWYn3z1WyAp91gk_WdvpEpJ8bUYUsHD_WR0yIrcfLz3kNkbrXOqmzDTmIpwuiW0vSRsmkt4ZIrbFhfzkuqd00PbAFKO5tqtUUYvyZfPg3t-ido' },
+    { name: 'Blue Wave Arena', distance: '3.1 miles away', imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCKD5-rVzoLz6f9v-qCMspf__ca39iQ4OHFnJRgBV9-OnK94IEHV5jc_YaNWQTrbWl3_aam13QY6HleDVSiEJeMFoSG4fXSDiTO-iKAUp1kd90iFXvqk4TEozedDywAsA8_G6xIFPcqPxnOuOt4ZTTx6L9FYDP6Yac4ru9F2GdWVpHo1YfkmKzWE89ENvJWIVoBRAKIdDaKgS3HQ0gAcj-rsl8Sas0z565ZdipQuYjte37QHEoLwtomF7BvmACPJ3tToPmJ8TGFmBw' },
+    { name: 'Pinnacle Sport', distance: '0.8 miles away', imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDb-DlJmHwJDSczK_2I-Qce3ebX9gvSTJdgTQBrxPfJf2I4eqwoq80BMzobIdPOkcZXufZTe1uid2DWngA4SjEHhDcar2Z9tPh0tjyPWS1YQGdAiBUN-zjvqRJ_a1SLgKeAFaiJzEm4qcxC2aDEht4bSGQ8m445L3Z4NDklBCUJkHoQjpZ1LGc6mHdMRbpq7tcqMfPDsfy6CkZoaRNADnmgCK68lzBos_BP8Pyz4eG5MAX-xmhoOe5hvLHf0ymYGrysuppZyCMNkMw' },
+    { name: 'Starlight Turf', distance: '1.5 miles away', imageSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBB3RITtL76I-8Tl0OAjMoVlPYD7A4Iav-StAVQtNeqyMhrP4yM-8uvehVUDBwivZrsbfGnGtOlnOkODgyvkC2mZv-NcByarU-LkWQW8-O20UsJlq9b2yPfxFGj8Su0_RZR2lRrC5iFPp3BxR1KDMqXohhyoIwAw-wBkE88QOrVSz8dZQLNnA1TjFFPzfHOYiVyCH_1ZQeAMDISZ48JO-2F_LXRgjp8xrIvjZds3sufDn1YrXJJ0Dw0dyNBBtWkyw8_lLmZCo5314Y' }
+];
+%>
+
+<main class="pt-24 pb-12 px-6 max-w-7xl mx-auto">
+    <!-- Hero Section: Quick Actions & Welcome -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+        <div class="lg:col-span-8 flex flex-col justify-center p-8 bg-gradient-to-br from-primary to-primary-container rounded-xl text-on-primary overflow-hidden relative">
+            <!-- Abstract Design Elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+            <h1 class="text-4xl font-headline font-extrabold tracking-tight mb-4">Hello, Champion!</h1>
+            <p class="text-lg text-primary-fixed font-medium mb-8 max-w-md">The pitch is calling. Ready for your next legendary match at The Kinetic Turf?</p>
+            
+            <div class="flex flex-wrap gap-4">
+                <button class="flex items-center gap-2 px-8 py-4 bg-surface-container-lowest text-primary font-headline font-bold rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-95">
+                    <span class="material-symbols-outlined" data-icon="stadium">stadium</span>
+                    Book a Futsal
+                </button>
+                <button class="flex items-center gap-2 px-8 py-4 bg-primary-container border border-white/20 text-on-primary font-headline font-bold rounded-xl hover:bg-primary/80 transition-all">
+                    <span class="material-symbols-outlined" data-icon="group">group</span>
+                    Find a Team
+                </button>
+            </div>
+        </div>
+
+        <!-- Notifications / Reminders Sidebar Tonal Style -->
+        <div class="lg:col-span-4 bg-surface-container-low p-6 rounded-xl">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-headline font-bold text-on-surface-variant">Live Reminders</h2>
+                <span class="text-primary text-sm font-semibold cursor-pointer">Clear All</span>
+            </div>
+            <div class="space-y-4">
+                <% liveReminders.forEach(reminder => { %>
+                    <%- include('components/live_reminder', { reminder }) %>
+                <% }); %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Bookings -->
+    <section class="mb-12">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-headline font-bold tracking-tight">Upcoming Bookings</h2>
+            <a class="text-primary font-semibold flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                View Schedule <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% upcomingBookings.forEach(booking => { %>
+                <%- include('components/booking_card', { booking }) %>
+            <% }); %>
+
+            <!-- Empty State / Add New -->
+            <div class="border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center p-6 text-outline group hover:border-primary/50 transition-colors cursor-pointer">
+                <div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center mb-4 group-hover:bg-primary-container group-hover:text-on-primary transition-all">
+                    <span class="material-symbols-outlined" data-icon="add">add</span>
+                </div>
+                <span class="font-headline font-bold">New Booking</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Grid -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-headline font-bold tracking-tight mb-6">Recommended Futsals</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <% recommendedFutsals.forEach(futsal => { %>
+                <%- include('components/futsal_card', { futsal }) %>
+            <% }); %>
+        </div>
+    </section>
+
+    <!-- Recently Viewed -->
+    <section>
+        <h2 class="text-lg font-headline font-bold text-on-surface-variant mb-4">Recently Viewed</h2>
+        <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-4">
+            <% recentlyViewed.forEach(view => { %>
+                <%- include('components/recently_viewed_card', { view }) %>
+            <% }); %>
+        </div>
+    </section>
+</main>
+
+<!-- FAB for quick action on mobile -->
+<button class="md:hidden fixed bottom-20 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-50 active:scale-90 transition-transform">
+    <span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+
+<%- include('partials/footer.ejs') %>

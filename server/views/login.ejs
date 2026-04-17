@@ -1,46 +1,65 @@
 <%- include('partials/header.ejs'); -%>
 
-<form>
-  <h2>Log In</h2>
-  <label for="email">Email</label>
-  <input type="text" name="email" required />
-  <div class="email error"></div>
-  <label for="password">Password</label>
-  <input type="password" name="password" required />
-  <div class="password error"></div>
-  <button>LogIn</button>
+<main class="pt-32 pb-20 px-6 flex items-center justify-center min-h-[85vh]">
+  <div class="bg-surface-container-lowest p-8 md:p-10 rounded-2xl shadow-sm w-full max-w-md border border-surface-variant">
+    <div class="text-center mb-8">
+      <h2 class="font-headline font-extrabold text-3xl text-on-surface tracking-tight mb-2">Welcome Back</h2>
+      <p class="text-on-surface-variant text-sm font-medium">Log in to view upcoming matches and book futsals.</p>
+    </div>
 
-  <script>
-    const form = document.querySelector("form");
-    const emailError = document.querySelector(".email.error");
-    const passwordError = document.querySelector(".password.error");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+    <form class="flex flex-col">
+      <label for="email" class="text-sm font-bold text-on-surface mb-2">Email</label>
+      <input type="text" name="email" class="w-full bg-surface-container-low text-on-surface outline-none border-2 border-transparent focus:border-primary rounded-xl p-4 transition-colors" placeholder="Enter your email" required />
+      <div class="email error text-error text-xs font-bold mt-1 mb-4 h-4"></div>
 
-      //reset the error
-      emailError.textContent = "";
-      passwordError.textContent = "";
+      <label for="password" class="text-sm font-bold text-on-surface mb-2">Password</label>
+      <input type="password" name="password" class="w-full bg-surface-container-low text-on-surface outline-none border-2 border-transparent focus:border-primary rounded-xl p-4 transition-colors" placeholder="Enter your password" required />
+      <div class="password error text-error text-xs font-bold mt-1 mb-6 h-4"></div>
 
-      const email = form.email.value;
-      const password = form.password.value;
-      try {
-        const res = await fetch("/login_post", {
-          method: "POST",
-          body: JSON.stringify({ email: email, password: password }),
-          headers: { "Content-Type": "application/json" },
+      <button type="submit" class="w-full bg-primary text-on-primary font-headline font-bold rounded-xl py-4 shadow-lg hover:shadow-xl hover:translate-y-[-2px] hover:bg-primary-container transition-all active:scale-95 flex justify-center items-center gap-2">
+        Log In <span class="material-symbols-outlined text-sm">login</span>
+      </button>
+
+      <p class="text-center text-sm text-on-surface-variant font-medium mt-6">
+        Don't have an account? <a href="/signUp" class="text-primary hover:text-primary-container font-bold">Sign up</a>
+      </p>
+
+      <script>
+        const form = document.querySelector("form");
+        const emailError = document.querySelector(".email.error");
+        const passwordError = document.querySelector(".password.error");
+        
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          //reset the error
+          emailError.textContent = "";
+          passwordError.textContent = "";
+
+          const email = form.email.value;
+          const password = form.password.value;
+          
+          try {
+            const res = await fetch("/login_post", {
+              method: "POST",
+              body: JSON.stringify({ email: email, password: password }),
+              headers: { "Content-Type": "application/json" },
+            });
+            const data = await res.json();
+            
+            if (data.errors) {
+              emailError.textContent = data.errors.email;
+              passwordError.textContent = data.errors.password;
+            } else {
+              location.assign("/home");
+            }
+          } catch (err) {
+            console.log(err);
+          }
         });
-        const data = await res.json();
-        if (data.errors) {
-          emailError.textContent = data.errors.email;
-          passwordError.textContent = data.errors.password;
-        } else {
-          location.assign("/home");
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    });
-  </script>
-</form>
+      </script>
+    </form>
+  </div>
+</main>
 
 <%- include('partials/footer'); -%>

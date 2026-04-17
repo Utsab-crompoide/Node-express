@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FutsalFlow - Home Dashboard</title>
+<!-- Font Imports -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f6fafe",
+                        "primary": "#006d40",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#40000c",
+                        "inverse-on-surface": "#edf1f5",
+                        "surface-container-low": "#f0f4f8",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#515f74",
+                        "tertiary-container": "#f97883",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eaeef2",
+                        "surface-variant": "#dfe3e7",
+                        "inverse-primary": "#5cde97",
+                        "on-primary-fixed-variant": "#00522f",
+                        "surface-dim": "#d6dade",
+                        "tertiary": "#a53845",
+                        "tertiary-fixed": "#ffdada",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#5cde97",
+                        "on-tertiary-container": "#6f0e21",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-container-high": "#e4e9ed",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#d5e3fd",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#bccabd",
+                        "on-background": "#171c1f",
+                        "on-error-container": "#93000a",
+                        "outline": "#6d7a6f",
+                        "inverse-surface": "#2c3134",
+                        "primary-container": "#2bb673",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-primary-container": "#004024",
+                        "surface-tint": "#006d40",
+                        "on-surface-variant": "#3d4a40",
+                        "primary-fixed": "#7afbb1",
+                        "surface-container-highest": "#dfe3e7",
+                        "on-tertiary-fixed-variant": "#85202f",
+                        "surface-bright": "#f6fafe",
+                        "on-primary-fixed": "#002110",
+                        "on-surface": "#171c1f",
+                        "tertiary-fixed-dim": "#ffb3b6",
+                        "on-secondary-container": "#57657b",
+                        "surface": "#f6fafe",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "secondary-fixed": "#d5e3fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-sm">
+<div class="flex items-center justify-between px-6 py-3 max-w-7xl mx-auto">
+<!-- Brand Logo -->
+<div class="text-xl font-extrabold text-emerald-800 dark:text-emerald-400 font-headline tracking-tight">
+                The Kinetic Turf
+            </div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1 font-['Plus_Jakarta_Sans'] font-bold tracking-tight" href="#">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors font-['Plus_Jakarta_Sans'] font-bold tracking-tight" href="#">Explore</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors font-['Plus_Jakarta_Sans'] font-bold tracking-tight" href="#">Bookings</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors font-['Plus_Jakarta_Sans'] font-bold tracking-tight" href="#">Profile</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container border-2 border-primary-container/20">
+<img alt="User profile avatar" data-alt="Close-up portrait of a young athletic male smiling, clean studio lighting with soft shadows on a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy7ZmtAzkzr81K6gJnNDrGGkA7ZlleBxtMjNVZ0sotH1XbA7lUNJB924zPqo5mfbCZ3INVx0mYEEKaAG0ceevVuUbSdMUb_qOid1sUNjNPXDsFWLY8R62C0el5g5z8TG2gBhrZ3BtwU0mJYPd4U42qD1-LzGAbEpT_uvVc1tT0_J0F7-QDkhM6JNvqr03fMavt6vq87Er-G1VvJkbKcPk5-xofqZoTZL0RASr4SQLx70Ft-QU5n6zcsKNG5mGvWKL6fbFhaBpPEdQ"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-6 max-w-7xl mx-auto">
+<!-- Hero Section: Quick Actions & Welcome -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+<div class="lg:col-span-8 flex flex-col justify-center p-8 bg-gradient-to-br from-primary to-primary-container rounded-xl text-on-primary overflow-hidden relative">
+<!-- Abstract Design Elements -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+<h1 class="text-4xl font-headline font-extrabold tracking-tight mb-4">Hello, Champion!</h1>
+<p class="text-lg text-primary-fixed font-medium mb-8 max-w-md">The pitch is calling. Ready for your next legendary match at The Kinetic Turf?</p>
+<div class="flex flex-wrap gap-4">
+<button class="flex items-center gap-2 px-8 py-4 bg-surface-container-lowest text-primary font-headline font-bold rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="stadium">stadium</span>
+                        Book a Futsal
+                    </button>
+<button class="flex items-center gap-2 px-8 py-4 bg-primary-container border border-white/20 text-on-primary font-headline font-bold rounded-xl hover:bg-primary/80 transition-all">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                        Find a Team
+                    </button>
+</div>
+</div>
+<!-- Notifications / Reminders Sidebar Tonal Style -->
+<div class="lg:col-span-4 bg-surface-container-low p-6 rounded-xl">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline font-bold text-on-surface-variant">Live Reminders</h2>
+<span class="text-primary text-sm font-semibold cursor-pointer">Clear All</span>
+</div>
+<div class="space-y-4">
+<div class="flex gap-4 p-4 bg-surface-container-lowest rounded-lg border-l-4 border-primary">
+<div class="w-10 h-10 flex items-center justify-center bg-primary-fixed text-on-primary-fixed rounded-full shrink-0">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Match in 2 hours</p>
+<p class="text-xs text-on-surface-variant">Kinetic Arena - Court A</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 bg-surface-container-lowest rounded-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-secondary-fixed text-on-secondary-fixed rounded-full shrink-0">
+<span class="material-symbols-outlined text-sm" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Payment Successful</p>
+<p class="text-xs text-on-surface-variant">Transaction ID: #FK-9921</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Upcoming Bookings -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl font-headline font-bold tracking-tight">Upcoming Bookings</h2>
+<a class="text-primary font-semibold flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                    View Schedule <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Booking Card 1 -->
+<div class="group bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden flex flex-col h-full hover:translate-y-[-4px] transition-all duration-300">
+<div class="absolute left-0 top-0 h-full w-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                            Confirmed
+                        </div>
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-2">Grand Central Arena</h3>
+<div class="space-y-2 mt-auto">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+                            Saturday, 24 Oct
+                        </div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="alarm">alarm</span>
+                            18:00 - 19:30 (90 min)
+                        </div>
+</div>
+</div>
+<!-- Booking Card 2 -->
+<div class="group bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden flex flex-col h-full hover:translate-y-[-4px] transition-all duration-300">
+<div class="absolute left-0 top-0 h-full w-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                            Confirmed
+                        </div>
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-2">Emerald Sports Hub</h3>
+<div class="space-y-2 mt-auto">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+                            Monday, 26 Oct
+                        </div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="alarm">alarm</span>
+                            20:00 - 21:00 (60 min)
+                        </div>
+</div>
+</div>
+<!-- Empty State / Add New -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center p-6 text-outline group hover:border-primary/50 transition-colors cursor-pointer">
+<div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center mb-4 group-hover:bg-primary-container group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</div>
+<span class="font-headline font-bold">New Booking</span>
+</div>
+</div>
+</section>
+<!-- Recommended Grid -->
+<section class="mb-12">
+<h2 class="text-2xl font-headline font-bold tracking-tight mb-6">Recommended Futsals</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Recommended 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group">
+<div class="h-48 overflow-hidden relative">
+<img alt="Professional indoor futsal court" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Professional indoor futsal court with bright lights, polished surface, and vivid green turf markings under stadium illumination" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf_iKxlKtnoRPRxGRfobvzyPMIzbm7kRHoBtXTAWqQ7lY2OThy1EHnbYnBJh-aMRy03sRuIyMKQ_NBKqOXUsn8ZsfQcrh0LNbIeIh8AezG4LzwV95HcipzLs_6jB91G2l4YUHAKtxywZ5yWPJHE5Sf5piEbW7fkeckfFwSeaFqc5RAgPh3IrdUdOCM6P8GylPHQixCkaGIqxjjknClc0WnXkF7AhMNfDM5fmcqvq9WlaGHzu1qqcVWK2u3FRnH6nXx9uYS838SOIo"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm text-amber-500" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.9</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline font-bold text-on-surface mb-1">Velocity Pitch One</h4>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs mb-3">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                            Downtown District
+                        </div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">$45<span class="text-xs font-normal text-on-surface-variant">/hr</span></span>
+<button class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1.5 rounded-lg text-xs font-bold">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Recommended 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group">
+<div class="h-48 overflow-hidden relative">
+<img alt="Outdoor synthetic turf futsal pitch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern outdoor futsal pitch with synthetic grass, blue side boundaries, and clear evening sky in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeuiOuog1qip_tUDu8UR7eY3HAT2QuIqWigI4RukttlZZnp9aaGIE6vpgeOeHeqNp0HQFLrpRGsbsynHiKK5SFDk_vUUz8EbDzTOn1dgvp2u5jekqB-O4QMqPDSwAK7lEj-uhMveGnS0jTEClhTjIrlUBFWvxSydCBoL_8kT2mbpM0sjEB0soRs6S8UUVXGEvtZz8Tuag0sX34cBQFeOB2lfD4ymHfRlwfjqx4huAvZbAIxBKHVSDWHuCUotjf_Sj0GWBXnwuZ4Zk"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm text-amber-500" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.7</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline font-bold text-on-surface mb-1">Skyline Roof Turf</h4>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs mb-3">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                            East Point
+                        </div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">$60<span class="text-xs font-normal text-on-surface-variant">/hr</span></span>
+<button class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1.5 rounded-lg text-xs font-bold">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Recommended 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group">
+<div class="h-48 overflow-hidden relative">
+<img alt="Training facility for futsal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-end indoor training facility for soccer and futsal, sleek minimal interior with bright green pitch and white lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRkZGE-V16vvXSCPX9khHZSf6_0IizyOZ4K7pXagxLwBKgP_hglLgyGimBPshRcm0R7xFCie-MpxobYn7ubfAOZk0uGeJeUlLGwQWPRDL1U5uKc8Nl0E5zqOuDOaenHWxqIo0wgq423DGfhQxji7UysahLX1_FCM5mmmm-ft-_7tH_1b91pqYcwlZB9D6IBCzwkfJ49rEndG5DkHEw06ceM3hzmGIVabg5n_Lx9oQN5xMZps_P-0c2-9tGYaBS5rOFCm5Xyw-4ynA"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm text-amber-500" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.8</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline font-bold text-on-surface mb-1">The Kinetic Dome</h4>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs mb-3">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                            North Valley
+                        </div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">$55<span class="text-xs font-normal text-on-surface-variant">/hr</span></span>
+<button class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1.5 rounded-lg text-xs font-bold">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Recommended 4 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group">
+<div class="h-48 overflow-hidden relative">
+<img alt="Neighborhood futsal court" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Cozy neighborhood futsal court surrounded by modern urban architecture at sunset with golden light reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCekEHhC34Sj508kckppq8XrLEKJNofyoT8l_Swb18Lk4Cl0wX4JaGq9HsQr7U3SAVcpibeFR4He5WyRWUli9pyT62KSmombTHcNTlhSKor8YZvL7P2VvV6ij30L3SyImXJDAo3fTlVO2nxIs9B6fbrdLj6fGmz3lAEfgMgUK1OEBVSFWF4U9wfA5CIAp37vONA4gkP8T_pAKAfaQk5EecjabqludfcujbyZV4k54FBRCOJNgFuQd0KELrOupnrfnrGA3rP2uzP2MI"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm text-amber-500" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.5</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline font-bold text-on-surface mb-1">Urban Arena Blue</h4>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs mb-3">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                            South Port
+                        </div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold">$40<span class="text-xs font-normal text-on-surface-variant">/hr</span></span>
+<button class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1.5 rounded-lg text-xs font-bold">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recently Viewed -->
+<section>
+<h2 class="text-lg font-headline font-bold text-on-surface-variant mb-4">Recently Viewed</h2>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-4">
+<div class="flex-none w-64 bg-surface-container-low p-4 rounded-xl flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg bg-slate-200 overflow-hidden shrink-0">
+<img alt="Court thumbnail" data-alt="Close-up of artificial grass and white boundary line of a sports field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjSxHS3ANkiG83f4xwAutq4r8B-WzPaVpr-pomAID0IFV7OCs74Nt4znuQyjwXpgPqS6Y64rbxio1Ih6c13eedPpWJGYRRUWpHfGni2axv12Ib9T0PRlkhGnEENKD7RIOGNP_7eCdzPbZ9AhqDI33TpbDdvM57FxWYn3z1WyAp91gk_WdvpEpJ8bUYUsHD_WR0yIrcfLz3kNkbrXOqmzDTmIpwuiW0vSRsmkt4ZIrbFhfzkuqd00PbAFKO5tqtUUYvyZfPg3t-ido"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Legacy Park</p>
+<p class="text-xs text-on-surface-variant">2.4 miles away</p>
+</div>
+</div>
+<div class="flex-none w-64 bg-surface-container-low p-4 rounded-xl flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg bg-slate-200 overflow-hidden shrink-0">
+<img alt="Court thumbnail" data-alt="High angle view of soccer players training on a green field in daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKD5-rVzoLz6f9v-qCMspf__ca39iQ4OHFnJRgBV9-OnK94IEHV5jc_YaNWQTrbWl3_aam13QY6HleDVSiEJeMFoSG4fXSDiTO-iKAUp1kd90iFXvqk4TEozedDywAsA8_G6xIFPcqPxnOuOt4ZTTx6L9FYDP6Yac4ru9F2GdWVpHo1YfkmKzWE89ENvJWIVoBRAKIdDaKgS3HQ0gAcj-rsl8Sas0z565ZdipQuYjte37QHEoLwtomF7BvmACPJ3tToPmJ8TGFmBw"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Blue Wave Arena</p>
+<p class="text-xs text-on-surface-variant">3.1 miles away</p>
+</div>
+</div>
+<div class="flex-none w-64 bg-surface-container-low p-4 rounded-xl flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg bg-slate-200 overflow-hidden shrink-0">
+<img alt="Court thumbnail" data-alt="A football sitting on the green grass of a professional pitch under stadium lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb-DlJmHwJDSczK_2I-Qce3ebX9gvSTJdgTQBrxPfJf2I4eqwoq80BMzobIdPOkcZXufZTe1uid2DWngA4SjEHhDcar2Z9tPh0tjyPWS1YQGdAiBUN-zjvqRJ_a1SLgKeAFaiJzEm4qcxC2aDEht4bSGQ8m445L3Z4NDklBCUJkHoQjpZ1LGc6mHdMRbpq7tcqMfPDsfy6CkZoaRNADnmgCK68lzBos_BP8Pyz4eG5MAX-xmhoOe5hvLHf0ymYGrysuppZyCMNkMw"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Pinnacle Sport</p>
+<p class="text-xs text-on-surface-variant">0.8 miles away</p>
+</div>
+</div>
+<div class="flex-none w-64 bg-surface-container-low p-4 rounded-xl flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg bg-slate-200 overflow-hidden shrink-0">
+<img alt="Court thumbnail" data-alt="Blurred action shot of a soccer player kicking a ball on a turf pitch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB3RITtL76I-8Tl0OAjMoVlPYD7A4Iav-StAVQtNeqyMhrP4yM-8uvehVUDBwivZrsbfGnGtOlnOkODgyvkC2mZv-NcByarU-LkWQW8-O20UsJlq9b2yPfxFGj8Su0_RZR2lRrC5iFPp3BxR1KDMqXohhyoIwAw-wBkE88QOrVSz8dZQLNnA1TjFFPzfHOYiVyCH_1ZQeAMDISZ48JO-2F_LXRgjp8xrIvjZds3sufDn1YrXJJ0Dw0dyNBBtWkyw8_lLmZCo5314Y"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Starlight Turf</p>
+<p class="text-xs text-on-surface-variant">1.5 miles away</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl border-t border-slate-100 flex justify-around items-center py-3 z-50">
+<div class="flex flex-col items-center text-primary">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-bold mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center text-slate-500">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px] font-bold mt-1">Explore</span>
+</div>
+<div class="flex flex-col items-center text-slate-500">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="text-[10px] font-bold mt-1">Bookings</span>
+</div>
+<div class="flex flex-col items-center text-slate-500">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold mt-1">Profile</span>
+</div>
+</nav>
+<!-- FAB for quick action on mobile -->
+<button class="md:hidden fixed bottom-20 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-50 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>
