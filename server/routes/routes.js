@@ -6,7 +6,9 @@ const route = express.Router();
 
 route.get('*', currentUser);
 route.get('/home', requireAuth, (req, res) => {
-    res.render('home')
+    res.render('home', {
+        currentPath: req.originalUrl
+    })
 })
 
 route.get('/login', (req, res) => {
@@ -15,6 +17,13 @@ route.get('/login', (req, res) => {
 
 route.get('/signup', (req, res) => {
     res.render('signUp')
+})
+
+route.get('/explore', (req, res) => {
+    res.render('explore', {
+        googlePlacesApiKey: process.env.GOOGLE_PLACES_API_KEY || '',
+        currentPath: req.originalUrl
+    })
 })
 
 route.get('/about', (req, res) => {
@@ -96,6 +105,9 @@ route.get('/users/getById/:userId', getById)
  *               email:
  *                 type: string
  *                 description: The user's email
+ *               password:
+ *                 type: string
+ *                 description: The user's password
  *     responses:
  *       200:
  *         description: User created successfully or existing user found
@@ -114,7 +126,7 @@ route.post('/user/createUser', addUser);
 
 /**
  * @swagger
- * /user/{userId}:
+ * /user/updateUser/{userId}:
  *   put:
  *     summary: Update an existing user
  *     tags: [User]
@@ -156,7 +168,7 @@ route.put('/user/updateUser/:userId', updateUser);
 
 /**
  * @swagger
- * /user/{userId}:
+ * /user/deleteUser/{userId}:
  *   delete:
  *     summary: Delete a user
  *     tags: [User]

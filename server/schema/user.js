@@ -11,7 +11,7 @@ export const userModel = async (sequelize) => {
                     msg: "Name cannot be empty"
                 }
             }
-        }, 
+        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -33,7 +33,8 @@ export const userModel = async (sequelize) => {
             }
         },
         userId: {
-            type: DataTypes.STRING,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             allowNull: false,
             unique: true
         }

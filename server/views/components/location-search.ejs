@@ -1,0 +1,87 @@
+<%
+/**
+ * Location Search Component
+ * ─────────────────────────────────────────────────────────────────
+ * Required props:
+ *   id          {string}  – unique identifier for this instance
+ *
+ * Optional props:
+ *   placeholder   {string}  – input placeholder text
+ *   onSelect      {string}  – global JS function name called with the selected place object
+ *   wrapperClass  {string}  – extra CSS classes on the outer wrapper
+ *   inputClass    {string}  – extra CSS classes on the <input>
+ *   wrapperStyle  {string}  – inline styles on the outer wrapper  (e.g. "width:300px")
+ *   inputStyle    {string}  – inline styles on the <input>
+ * ─────────────────────────────────────────────────────────────────
+ */
+const _id           = typeof id           !== 'undefined' ? id           : 'ls-' + Math.random().toString(36).slice(2);
+const _placeholder  = typeof placeholder  !== 'undefined' ? placeholder  : 'Search location…';
+const _onSelect     = typeof onSelect     !== 'undefined' ? onSelect     : '';
+const _wrapClass    = typeof wrapperClass !== 'undefined' ? wrapperClass : '';
+const _inputClass   = typeof inputClass   !== 'undefined' ? inputClass   : '';
+const _wrapStyle    = typeof wrapperStyle !== 'undefined' ? wrapperStyle : '';
+const _inputStyle   = typeof inputStyle   !== 'undefined' ? inputStyle   : '';
+%>
+
+<div
+  class="ls-wrapper <%= _wrapClass %>"
+  id="ls-wrap-<%= _id %>"
+  data-ls-id="<%= _id %>"
+  data-ls-on-select="<%= _onSelect %>"
+  <% if (_wrapStyle) { %>style="<%= _wrapStyle %>"<% } %>
+>
+  <!-- Input Row -->
+  <div class="ls-input-row">
+    <!-- Pin icon -->
+    <span class="ls-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+    </span>
+
+    <!-- Text input -->
+    <input
+      id="ls-input-<%= _id %>"
+      class="ls-input <%= _inputClass %>"
+      type="text"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="<%= _placeholder %>"
+      aria-label="<%= _placeholder %>"
+      aria-autocomplete="list"
+      aria-controls="ls-dropdown-<%= _id %>"
+      aria-expanded="false"
+      role="combobox"
+      <% if (_inputStyle) { %>style="<%= _inputStyle %>"<% } %>
+    />
+
+    <button
+      id="ls-clear-<%= _id %>"
+      class="ls-clear hidden"
+      type="button"
+      aria-label="Clear location"
+      tabindex="-1"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <ul
+    id="ls-dropdown-<%= _id %>"
+    class="ls-dropdown hidden"
+    role="listbox"
+    aria-label="Location suggestions"
+  >
+    <!-- JS will inject <li> items here -->
+  </ul>
+
+  <!-- Loading / status indicator -->
+  <p id="ls-status-<%= _id %>" class="ls-status hidden" aria-live="polite"></p>
+</div>

@@ -6,6 +6,10 @@
     <title>FutsalFlow - Home Dashboard</title>
     <!-- Font Imports -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <!-- Google Places API key (read by location-search.js) -->
+    <meta name="google-places-api-key" content="<%= typeof googlePlacesApiKey !== 'undefined' ? googlePlacesApiKey : process.env.GOOGLE_PLACES_API_KEY || '' %>"/>
+    <!-- Location Search component styles -->
+    <link rel="stylesheet" href="/css/location-search.css"/>
     <!-- Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     
@@ -91,16 +95,42 @@
 <body class="bg-background text-on-surface font-body antialiased">
 <header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-sm">
     <div class="flex items-center justify-between px-6 py-3 max-w-7xl mx-auto">
-        <!-- Brand Logo -->
         <div class="text-xl font-extrabold text-emerald-800 dark:text-emerald-400 font-headline tracking-tight">
-            The Kinetic Turf
+            The Futpal Turf
         </div>
-        <!-- Navigation Links -->
-        <nav class="hidden md:flex items-center gap-8">
-            <a class="text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1 font-['Plus_Jakarta_Sans'] font-bold tracking-tight" href="/home">Home</a>
-            <a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors font-['Plus_Jakarta_Sans'] font-bold tracking-tight" href="/about">About</a>
-            <a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors font-['Plus_Jakarta_Sans'] font-bold tracking-tight" href="/account">My Account</a>
-        </nav>
+        <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+    <a href="/home"
+       class="<%= currentPath === '/home'
+         ? 'text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1'
+         : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors'
+       %> font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+       Home
+    </a>
+
+    <a href="/explore"
+       class="<%= currentPath === '/explore'
+         ? 'text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1'
+         : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors'
+       %> font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+       Explore
+    </a>
+
+    <a href="/bookings"
+       class="<%= currentPath === '/bookings'
+         ? 'text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1'
+         : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors'
+       %> font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+       Bookings
+    </a>
+
+    <a href="/account"
+       class="<%= currentPath === '/account'
+         ? 'text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1'
+         : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors'
+       %> font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+       Profile
+    </a>
+</nav>
         <!-- Trailing Actions -->
         <div class="flex items-center gap-4">
             <% if(typeof user !== 'undefined' && user) { %>
@@ -120,7 +150,7 @@
     </div>
 </header>
 <!-- Bottom Navigation for Mobile -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl border-t border-slate-100 flex justify-around items-center py-3 z-50">
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl border-t border-slate-100 flex justify-around items-center py-3 z-50" aria-label="Mobile Navigation">
     <a href="/home" class="flex flex-col items-center text-primary">
         <span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
         <span class="text-[10px] font-bold mt-1">Home</span>
@@ -138,3 +168,5 @@
         <span class="text-[10px] font-bold mt-1">Profile</span>
     </a>
 </nav>
+<!-- Location Search component JS -->
+<script src="/js/location-search.js" defer></script>

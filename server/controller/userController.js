@@ -1,6 +1,5 @@
 import { UserModel } from "../postgres/postgres.js"
 import Jwt from 'jsonwebtoken'
-import { v4 as uuidv4 } from 'uuid';
 
 const jwt = Jwt;
 
@@ -83,21 +82,34 @@ const jsonWebToken = (userId, email, fullName) => {
 
 export const addUser = async (req, res) => {
     try {
-        const userId = uuidv4()
-        console.log(userId, 'USERID')
-        req.body.userId = userId
         const user = await UserModel.create(req.body);
+
         if (user.dataValues) {
-            const token = jsonWebToken(user.dataValues.userId, user.dataValues.email, user.dataValues.fullName)
-            res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
-            return res.status(200).json({ 'message': 'User created successfully', token, userId })
+            const token = jsonWebToken(
+                user.userId,
+                user.email,
+                user.fullName
+            );
+
+            res.cookie('jwt', token, {
+                httpOnly: true,
+                maxAge: maxAge * 1000
+            });
+
+            return res.status(200).json({
+                message: 'User created successfully',
+                token,
+                userId: user.userId
+            });
         }
-        return res.status(200).json({ 'message': 'Error creating user!' })
+
+        return res.status(200).json({ message: 'Error creating user!' });
+
     } catch (error) {
-        const errors = handleErrors(error.errors)
-        res.status(400).json({ errors })
+        const errors = handleErrors(error.errors);
+        res.status(400).json({ errors });
     }
-}
+};
 
 export const updateUser = async (req, res) => {
     try {
