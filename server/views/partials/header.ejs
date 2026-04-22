@@ -152,20 +152,20 @@
 </header>
 <!-- Bottom Navigation for Mobile -->
 <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl border-t border-slate-100 flex justify-around items-center py-3 z-50" aria-label="Mobile Navigation">
-    <a href="/home" class="flex flex-col items-center text-primary">
-        <span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+    <a href="/home" class="flex flex-col items-center <%= (typeof currentPath !== 'undefined' && currentPath === '/home') ? 'text-primary' : 'text-slate-500' %>">
+        <span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' <%= (typeof currentPath !== 'undefined' && currentPath === '/home') ? '1' : '0' %>;">home</span>
         <span class="text-[10px] font-bold mt-1">Home</span>
     </a>
-    <a href="/explore" class="flex flex-col items-center text-slate-500">
-        <span class="material-symbols-outlined" data-icon="search">search</span>
+    <a href="/explore" class="flex flex-col items-center <%= (typeof currentPath !== 'undefined' && currentPath === '/explore') ? 'text-primary' : 'text-slate-500' %>">
+        <span class="material-symbols-outlined" data-icon="search" style="font-variation-settings: 'FILL' <%= (typeof currentPath !== 'undefined' && currentPath === '/explore') ? '1' : '0' %>;">search</span>
         <span class="text-[10px] font-bold mt-1">Explore</span>
     </a>
-    <a href="/bookings" class="flex flex-col items-center text-slate-500">
-        <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+    <a href="/bookings" class="flex flex-col items-center <%= (typeof currentPath !== 'undefined' && currentPath === '/bookings') ? 'text-primary' : 'text-slate-500' %>">
+        <span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: 'FILL' <%= (typeof currentPath !== 'undefined' && currentPath === '/bookings') ? '1' : '0' %>;">calendar_month</span>
         <span class="text-[10px] font-bold mt-1">Bookings</span>
     </a>
-    <a href="/account" class="flex flex-col items-center text-slate-500">
-        <span class="material-symbols-outlined" data-icon="person">person</span>
+    <a href="/account" class="flex flex-col items-center <%= (typeof currentPath !== 'undefined' && currentPath === '/account') ? 'text-primary' : 'text-slate-500' %>">
+        <span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' <%= (typeof currentPath !== 'undefined' && currentPath === '/account') ? '1' : '0' %>;">person</span>
         <span class="text-[10px] font-bold mt-1">Profile</span>
     </a>
 </nav>
