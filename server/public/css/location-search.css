@@ -7,7 +7,6 @@
 .ls-input-row {
   display: flex;
   align-items: center;
-  gap: 8px;
   background: #ffffff;
   border-radius: 12px;
   padding: 0 14px;

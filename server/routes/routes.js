@@ -1,6 +1,7 @@
 import express from 'express'
 import { getAllItems, addUser, updateUser, deleteUser, getById, login, logOut } from '../controller/userController.js';
 import { requireAuth, currentUser } from '../middleware/authMiddleware.js';
+import { explorePageData } from '../data/explorePageData.js';
 
 const route = express.Router();
 
@@ -22,7 +23,8 @@ route.get('/signup', (req, res) => {
 route.get('/explore', (req, res) => {
     res.render('explore', {
         googlePlacesApiKey: process.env.GOOGLE_PLACES_API_KEY || '',
-        currentPath: req.originalUrl
+        currentPath: req.originalUrl,
+        explorePageData
     })
 })
 

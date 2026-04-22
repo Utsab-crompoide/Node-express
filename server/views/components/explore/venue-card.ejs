@@ -1,0 +1,45 @@
+<%
+const venue = props?.venue || {};
+%>
+
+<article class="explore-venue-card group <%= venue.selected ? 'explore-venue-card--selected' : '' %>">
+  <div class="relative h-56 overflow-hidden">
+    <img src="<%= venue.imageSrc %>" alt="<%= venue.name %>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    <% if (venue.badge) { %>
+      <span class="absolute top-4 left-4 bg-primary/90 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">
+        <%= venue.badge %>
+      </span>
+    <% } %>
+    <button type="button" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white/40 transition-colors">
+      <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' <%= venue.isFavorite ? 1 : 0 %>">favorite</span>
+    </button>
+  </div>
+
+  <div class="p-5 flex flex-col h-full <%= venue.selected ? 'border-l-4 border-primary' : '' %>">
+    <div class="flex justify-between items-start mb-2">
+      <h3 class="font-headline font-bold text-lg text-on-surface"><%= venue.name %></h3>
+      <div class="flex items-center gap-1">
+        <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+        <span class="text-xs font-bold text-on-surface"><%= venue.rating %></span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-1 text-on-surface-variant text-xs mb-4">
+      <span class="material-symbols-outlined text-sm">location_on</span>
+      <span><%= venue.locationText %></span>
+    </div>
+
+    <div class="mt-auto flex items-center justify-between">
+      <div>
+        <span class="text-primary font-bold text-lg font-headline">$<%= venue.price %></span>
+        <span class="text-on-surface-variant text-xs">/hour</span>
+      </div>
+      <%- include('./cta-button', {
+        props: {
+          label: 'View Details',
+          variant: venue.primaryAction ? 'primary' : 'secondary'
+        }
+      }) %>
+    </div>
+  </div>
+</article>

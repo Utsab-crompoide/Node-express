@@ -10,6 +10,7 @@
     <meta name="google-places-api-key" content="<%= typeof googlePlacesApiKey !== 'undefined' ? googlePlacesApiKey : process.env.GOOGLE_PLACES_API_KEY || '' %>"/>
     <!-- Location Search component styles -->
     <link rel="stylesheet" href="/css/location-search.css"/>
+    <link rel="stylesheet" href="/css/explore.css"/>
     <!-- Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     
@@ -100,7 +101,7 @@
         </div>
         <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
     <a href="/home"
-       class="<%= currentPath === '/home'
+       class="<%= (typeof currentPath !== 'undefined' && currentPath === '/home')
          ? 'text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1'
          : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors'
        %> font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
@@ -108,7 +109,7 @@
     </a>
 
     <a href="/explore"
-       class="<%= currentPath === '/explore'
+       class="<%= (typeof currentPath !== 'undefined' && currentPath === '/explore')
          ? 'text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1'
          : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors'
        %> font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
@@ -116,7 +117,7 @@
     </a>
 
     <a href="/bookings"
-       class="<%= currentPath === '/bookings'
+       class="<%= (typeof currentPath !== 'undefined' && currentPath === '/bookings')
          ? 'text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1'
          : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors'
        %> font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
@@ -124,7 +125,7 @@
     </a>
 
     <a href="/account"
-       class="<%= currentPath === '/account'
+       class="<%= (typeof currentPath !== 'undefined' && currentPath === '/account')
          ? 'text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1'
          : 'text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition-colors'
        %> font-['Plus_Jakarta_Sans'] font-bold tracking-tight">

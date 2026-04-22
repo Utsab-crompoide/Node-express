@@ -1,0 +1,24 @@
+<%
+const label = typeof props?.label === "string" ? props.label : "";
+const icon = typeof props?.icon === "string" ? props.icon : "";
+const name = typeof props?.name === "string" ? props.name : "";
+const id = typeof props?.id === "string" ? props.id : name;
+const value = typeof props?.value === "string" ? props.value : "";
+const options = Array.isArray(props?.options) ? props.options : [];
+const wrapperClass = typeof props?.wrapperClass === "string" ? props.wrapperClass : "";
+%>
+
+<div class="space-y-2 <%= wrapperClass %>">
+  <label class="text-xs font-bold uppercase tracking-[0.08em] text-on-surface-variant" for="<%= id %>"><%= label %></label>
+  <div class="explore-select-wrap">
+    <% if (icon) { %>
+      <span class="explore-select-icon"><%= icon %></span>
+    <% } %>
+    <select id="<%= id %>" name="<%= name %>" class="explore-select <%= icon ? 'explore-select--with-icon' : '' %>">
+      <% options.forEach((option) => { %>
+        <option value="<%= option.value %>" <%= option.value === value ? 'selected' : '' %>><%= option.label %></option>
+      <% }) %>
+    </select>
+    <span class="material-symbols-outlined explore-select-chevron">expand_more</span>
+  </div>
+</div>

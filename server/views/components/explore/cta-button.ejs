@@ -1,0 +1,17 @@
+<%
+const label = typeof props?.label === "string" ? props.label : "View Details";
+const variant = typeof props?.variant === "string" ? props.variant : "primary";
+const icon = typeof props?.icon === "string" ? props.icon : "";
+const buttonType = typeof props?.buttonType === "string" ? props.buttonType : "button";
+const className = typeof props?.className === "string" ? props.className : "";
+%>
+
+<button
+  type="<%= buttonType %>"
+  class="explore-btn <%= variant === 'secondary' ? 'explore-btn--secondary' : 'explore-btn--primary' %> <%= className %>"
+>
+  <span><%= label %></span>
+  <% if (icon) { %>
+    <span class="material-symbols-outlined text-base"><%= icon %></span>
+  <% } %>
+</button>

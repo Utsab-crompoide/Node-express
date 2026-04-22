@@ -30,8 +30,8 @@
   'use strict';
 
   /* ── Constants ──────────────────────────────────────────────── */
-  const DEBOUNCE_MS     = 300;
-  const MIN_CHARS       = 2;
+  const DEBOUNCE_MS = 300;
+  const MIN_CHARS = 2;
   const MAX_SUGGESTIONS = 5;
 
   /* ── Utility: debounce ──────────────────────────────────────── */
@@ -63,10 +63,10 @@
       }
 
       const script = document.createElement('script');
-      script.id  = 'ls-google-places-script';
+      script.id = 'ls-google-places-script';
       script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
       script.async = true;
-      script.onload  = resolve;
+      script.onload = resolve;
       script.onerror = () => reject(new Error('Failed to load Google Places API'));
       document.head.appendChild(script);
     });
@@ -75,13 +75,13 @@
   /* ── Build a single suggestion <li> ─────────────────────────── */
   function buildItem(prediction) {
     const li = document.createElement('li');
-    li.className   = 'ls-item';
+    li.className = 'ls-item';
     li.setAttribute('role', 'option');
     li.setAttribute('data-place-id', prediction.place_id);
 
     const mainText = prediction.structured_formatting?.main_text
       || prediction.description.split(',')[0];
-    const subText  = prediction.structured_formatting?.secondary_text
+    const subText = prediction.structured_formatting?.secondary_text
       || prediction.description.split(',').slice(1).join(',').trim();
 
     li.innerHTML = `
@@ -116,18 +116,18 @@
      ══════════════════════════════════════════════════════════════ */
   class LocationSearch {
     constructor(wrapper, autocompleteService) {
-      this.id          = wrapper.dataset.lsId;
-      this.onSelectFn  = wrapper.dataset.lsOnSelect || '';
-      this.service     = autocompleteService;
+      this.id = wrapper.dataset.lsId;
+      this.onSelectFn = wrapper.dataset.lsOnSelect || '';
+      this.service = autocompleteService;
 
-      this.wrapper   = wrapper;
-      this.input     = document.getElementById(`ls-input-${this.id}`);
-      this.dropdown  = document.getElementById(`ls-dropdown-${this.id}`);
-      this.clearBtn  = document.getElementById(`ls-clear-${this.id}`);
-      this.statusEl  = document.getElementById(`ls-status-${this.id}`);
+      this.wrapper = wrapper;
+      this.input = document.getElementById(`ls-input-${this.id}`);
+      this.dropdown = document.getElementById(`ls-dropdown-${this.id}`);
+      this.clearBtn = document.getElementById(`ls-clear-${this.id}`);
+      this.statusEl = document.getElementById(`ls-status-${this.id}`);
 
-      this._predictions  = [];
-      this._activeIndex  = -1;
+      this._predictions = [];
+      this._activeIndex = -1;
       this._sessionToken = null;
       this._selectedPlace = null;
 
@@ -159,7 +159,7 @@
       });
 
       this.input.addEventListener('keydown', this._handleKeydown.bind(this));
-      this.input.addEventListener('focus',   this._onFocus.bind(this));
+      this.input.addEventListener('focus', this._onFocus.bind(this));
 
       // Clear button
       this.clearBtn.addEventListener('click', () => this._clear());
@@ -231,16 +231,16 @@
 
       const mainText = prediction.structured_formatting?.main_text
         || prediction.description.split(',')[0];
-      const subText  = prediction.structured_formatting?.secondary_text || '';
+      const subText = prediction.structured_formatting?.secondary_text || '';
 
       // Build result object
       const placeObj = {
-        placeId      : prediction.place_id,
-        name         : mainText,
-        description  : prediction.description,
+        placeId: prediction.place_id,
+        name: mainText,
+        description: prediction.description,
         secondaryText: subText,
-        lat          : null,
-        lng          : null,
+        lat: null,
+        lng: null,
       };
 
       this._selectedPlace = placeObj;
@@ -325,7 +325,7 @@
     /* ── Clear input ─────────────────────────────────────────────── */
     _clear() {
       this.input.value = '';
-      this._predictions  = [];
+      this._predictions = [];
       this._selectedPlace = null;
       this._toggleClear(false);
       this._closeDropdown();

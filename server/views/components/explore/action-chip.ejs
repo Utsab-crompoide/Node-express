@@ -1,0 +1,13 @@
+<%
+const label = typeof props?.label === "string" ? props.label : "";
+const active = Boolean(props?.active);
+const styleVariant = typeof props?.styleVariant === "string" ? props.styleVariant : "default";
+const customClass = typeof props?.className === "string" ? props.className : "";
+%>
+
+<button
+  type="button"
+  class="explore-chip <%= active ? 'explore-chip--active' : '' %> <%= styleVariant === 'soft' ? 'explore-chip--soft' : '' %> <%= customClass %>"
+>
+  <%= label %>
+</button>

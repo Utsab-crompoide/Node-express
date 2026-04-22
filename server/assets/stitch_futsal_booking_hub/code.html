@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#f6fafe",
+                    "primary": "#006d40",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#40000c",
+                    "inverse-on-surface": "#edf1f5",
+                    "surface-container-low": "#f0f4f8",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#515f74",
+                    "tertiary-container": "#f97883",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#eaeef2",
+                    "surface-variant": "#dfe3e7",
+                    "inverse-primary": "#5cde97",
+                    "on-primary-fixed-variant": "#00522f",
+                    "surface-dim": "#d6dade",
+                    "tertiary": "#a53845",
+                    "tertiary-fixed": "#ffdada",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#5cde97",
+                    "on-tertiary-container": "#6f0e21",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "surface-container-high": "#e4e9ed",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#d5e3fd",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#bccabd",
+                    "on-background": "#171c1f",
+                    "on-error-container": "#93000a",
+                    "outline": "#6d7a6f",
+                    "inverse-surface": "#2c3134",
+                    "primary-container": "#2bb673",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "on-primary-container": "#004024",
+                    "surface-tint": "#006d40",
+                    "on-surface-variant": "#3d4a40",
+                    "primary-fixed": "#7afbb1",
+                    "surface-container-highest": "#dfe3e7",
+                    "on-tertiary-fixed-variant": "#85202f",
+                    "surface-bright": "#f6fafe",
+                    "on-primary-fixed": "#002110",
+                    "on-surface": "#171c1f",
+                    "tertiary-fixed-dim": "#ffb3b6",
+                    "on-secondary-container": "#57657b",
+                    "surface": "#f6fafe",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "secondary-fixed": "#d5e3fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-sm">
+<div class="flex items-center justify-between px-6 py-3 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-extrabold text-emerald-800 dark:text-emerald-400 font-headline tracking-tight">The Kinetic Turf</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors active:scale-95 duration-200" href="#">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors active:scale-95 duration-200" href="#">Explore</a>
+<a class="text-emerald-700 dark:text-emerald-400 border-b-2 border-emerald-600 pb-1 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors active:scale-95 duration-200" href="#">Bookings</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-emerald-600 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors active:scale-95 duration-200" href="#">Profile</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-full">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile avatar" class="h-full w-full object-cover" data-alt="Close up portrait of a smiling young man in athletic wear with soft studio lighting and clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgJrvZ_fjz6k5HLH_eJltHKYOczP-BTWaOdABN3WiQpwWKaGiLTfWB7Cm7csQQifO8xdaOR5zUu66AD4PQ8VTaCRkLWjSmbB-1i-PuE8ozFl8g1ole3GGCgBZ2v3m9mXWQA0plMihjrnfgFr6itbe2x3FkT52Ea-yCBwk3WIh9lWRhsUzNQp_nhgpWnc5MZImWiYBAMKWF1FBuPfAGATDPA98DpXkJjYP4jHbptZXIqcz5FfEpqBTtocjrQAm4OVRNnmwc5uLSMv0"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-12 px-6 max-w-7xl mx-auto">
+<!-- Header & Filters Section -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-4xl font-headline font-extrabold tracking-tight text-on-surface mb-2">My Bookings</h1>
+<p class="text-on-surface-variant font-body">Manage your upcoming matches and review past pitch performances.</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="bg-surface-container-low p-1 rounded-xl flex">
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary text-sm font-semibold shadow-sm transition-all">All</button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant hover:text-primary text-sm font-medium transition-all">Upcoming</button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant hover:text-primary text-sm font-medium transition-all">Completed</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-surface-container-lowest border border-outline-variant/15 rounded-xl text-sm font-medium hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                        Date Range
+                        <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant/15 rounded-xl text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none w-64" placeholder="Search venues..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Bookings Bento-style Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-1 gap-4">
+<!-- Booking Card 1: Upcoming -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:translate-x-1 group relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6">
+<!-- Status Accent Bar -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-center gap-6">
+<div class="h-16 w-16 rounded-xl overflow-hidden flex-shrink-0">
+<img alt="Venue Thumbnail" class="h-full w-full object-cover" data-alt="Interior of a modern high-end futsal court with bright emerald artificial turf and professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIkKa4ZGg8HOoRosJUncA8QALoAlf-vV_HhGYX5xMwNaYYZXQEkur3oN-qq6GHro9sQpluUtA8baa6EvFk93SflGe2Pv6GYKqzVOfyO1k7yWuy8nRw4EKdep0sRlsqIOeLnDe2Kfpbi5PZ-AhUIgljOH_9mWPDQXLYWi4gRlXpRaw08Prr19rDIx_hjaQRwwrnpgwd2LDw3Kh2tljOuWttt8ERBSIhMTTd9RB2u3m9_BOZwhsmBzgmcuu5vEKuY4R2GNzWOLksReg"/>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="font-headline font-bold text-lg text-on-surface">The Emerald Arena - Pitch A</h3>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-on-surface-variant font-medium">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Oct 24, 2023
+                            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                19:00 - 20:30
+                            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Central Sports District
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2.5 text-sm font-bold text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors active:scale-95 duration-150">
+                        View Details
+                    </button>
+<button class="px-6 py-2.5 text-sm font-bold bg-primary text-on-primary rounded-lg shadow-sm hover:opacity-90 transition-all active:scale-95 duration-150">
+                        Cancel Booking
+                    </button>
+</div>
+</div>
+<!-- Booking Card 2: Completed -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:translate-x-1 group relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6 opacity-85 hover:opacity-100">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary/30"></div>
+<div class="flex items-center gap-6">
+<div class="h-16 w-16 rounded-xl overflow-hidden flex-shrink-0 grayscale-[0.5]">
+<img alt="Venue Thumbnail" class="h-full w-full object-cover" data-alt="Outdoor rooftop futsal pitch at night with city skyline lights in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0JcP977kPyOul_yvnhAH-e-NE1I6B5dV1nhQQVARFvdaCZBwxG60o3EzsemSsZRpyS115nKf815i9IlG2ItCI5S88osz2pj3qXVaUw7qxMvdxuPABdgeTQL2tFqlrMJADIBO_S-HTiUyZXie3F6g2H0OwuC8VBPSpwNpaoWolPy-C3iMV0qodLgB-REu5Qkx6cI2J0HvOkbSRzqbOgvS0nyur77VG-9SYaPZTThlgUNg_fxdQp8wGHPcLoK499fO_JQcaqlbzH8g"/>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="font-headline font-bold text-lg text-on-surface">Skyline Futsal Hub</h3>
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-xs font-bold uppercase tracking-wider">Completed</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-on-surface-variant font-medium">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Oct 20, 2023
+                            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                21:00 - 22:00
+                            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Downtown Plaza
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2.5 text-sm font-bold text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors">
+                        View Details
+                    </button>
+<button class="px-6 py-2.5 text-sm font-bold border border-primary text-primary hover:bg-primary/5 rounded-lg transition-all active:scale-95 duration-150">
+                        Book Again
+                    </button>
+</div>
+</div>
+<!-- Booking Card 3: Cancelled -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:translate-x-1 group relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6 opacity-60 hover:opacity-80">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-center gap-6">
+<div class="h-16 w-16 rounded-xl overflow-hidden flex-shrink-0 grayscale">
+<img alt="Venue Thumbnail" class="h-full w-full object-cover" data-alt="Wide shot of an empty futsal stadium with rows of seats and a pristine blue court" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfDbb2Wf3p3uGbAw_cZt8Ujkz9CioyiCe3Nbiu-lXAZI1lApl8Mfld7Brav9QM6dSQLGohH_v3zSf-dK4IQwOZdXSLMlvb2hww5vRrisWrBsyE_zJwp16gqTexKfmozXiYEmIc4BOW_Y8MJ4xdShx6f6OtcHELklDEQtCPd2yHJcg8DqOSgcW7k4APZ1SVm_6myPBOXM7jNtRxe0e_hWmt-cO424e1uRWiL0aBQRCuUSsnUWUGEVoqdh_HaYNJQMgjqlqMUImd1Uo"/>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="font-headline font-bold text-lg text-on-surface">Blue Turf Sports Complex</h3>
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full text-xs font-bold uppercase tracking-wider">Cancelled</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-on-surface-variant font-medium">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Oct 15, 2023
+                            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                17:00 - 18:30
+                            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                East Riverside
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2.5 text-sm font-bold text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors">
+                        View Receipt
+                    </button>
+<button class="px-6 py-2.5 text-sm font-bold bg-surface-container-high text-on-surface-variant rounded-lg cursor-not-allowed">
+                        Refunded
+                    </button>
+</div>
+</div>
+<!-- Booking Card 4: Completed -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:translate-x-1 group relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6 opacity-85 hover:opacity-100">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary/30"></div>
+<div class="flex items-center gap-6">
+<div class="h-16 w-16 rounded-xl overflow-hidden flex-shrink-0 grayscale-[0.5]">
+<img alt="Venue Thumbnail" class="h-full w-full object-cover" data-alt="Close-up of a futsal ball on high-quality synthetic grass with shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmFOtALRCEbmoQMrZzhv7KsA6vtvfpmCDDdeLd6Ms-2OaKYkOuRLozOAPFpcnjKXRr6gUQIXcGN8O7Hvkee-SVVuq250OqR5_6g-_W3JSGBzEF9Yd9DRW95-CGUuGo2nxQaym9z40O0QbaXBYXQsFRwcwx-bRXe630-7TpFQbUn3VPb6dTbK7dItHo4AMZ6E9lbMtCvJZ6NmCsX2r7MgyMSNOwzIfFZ7A8MrBPWiRYEFcLaIlYdcvXEiZzLpJjE_KKCaM3ikbmQYI"/>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="font-headline font-bold text-lg text-on-surface">Pro Turf Futsal Center</h3>
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-xs font-bold uppercase tracking-wider">Completed</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-on-surface-variant font-medium">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Oct 12, 2023
+                            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                20:00 - 21:00
+                            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                North Industrial Park
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2.5 text-sm font-bold text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors">
+                        View Details
+                    </button>
+<button class="px-6 py-2.5 text-sm font-bold border border-primary text-primary hover:bg-primary/5 rounded-lg transition-all active:scale-95 duration-150">
+                        Book Again
+                    </button>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-12 flex justify-center">
+<button class="px-8 py-3 bg-surface-container-high hover:bg-surface-variant text-on-surface font-bold rounded-xl transition-all active:scale-95">
+                Load Older Bookings
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl border-t border-outline-variant/10 z-50">
+<div class="flex justify-around items-center h-16 px-4">
+<a class="flex flex-col items-center gap-0.5 text-slate-500" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold font-headline">Home</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 text-slate-500" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold font-headline">Explore</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 text-emerald-700" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="text-[10px] font-bold font-headline">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 text-slate-500" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold font-headline">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Contextual FAB (Floating Action Button) - Suppressed on Details, but visible on List View -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-8 bg-primary text-on-primary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined">add</span>
+</button>
+</body></html>
